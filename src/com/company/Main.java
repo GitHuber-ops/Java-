@@ -1,8 +1,23 @@
 package com.company;
 
-public class Main {
+import java.io.EOFException;
 
+import static com.company.Admin.setPassword;
+import static com.company.IOModule.save;
+import static com.company.PrintModule.printAll;
+import static com.company.WelcomeAndChoose.sectionChoose;
+
+public class Main {
     public static void main(String[] args) {
-	// write your code here
+        try {
+            setPassword();
+            IOModule.load();
+            //printAll();
+            sectionChoose();
+        }catch (EOFException e){
+            e.printStackTrace();
+        }finally {
+            save();
+        }
     }
 }
